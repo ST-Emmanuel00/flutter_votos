@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:votacion/screen/contador.dart';
+import 'package:votacion/screen/votacones.dart';
 
 void main() {
   runApp(const App());
@@ -15,7 +16,7 @@ class App extends StatelessWidget {
       theme: ThemeData( 
         useMaterial3: true,
         colorSchemeSeed: Colors.blue ),
-      home: Contador(),
+      home: const Votaciones(),
     );
   }
 }

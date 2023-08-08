@@ -8,7 +8,9 @@ class Contador extends StatefulWidget {
 }
 
 class _ContadorState extends State<Contador> {
+
   int contador = 0;
+  String mensaje = 'Clicks' ;
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +25,35 @@ class _ContadorState extends State<Contador> {
               fontSize: 30,
               fontWeight: FontWeight.w300),
         ),
+        actions: [
+          IconButton(icon: const  Icon(  Icons.refresh_rounded ),
+          onPressed: () {
+            
+            contador = 0;
+            setState(() {
+              
+            });
+          },
+          )
+        ],
       ),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('$contador', style: const TextStyle(fontSize: 100)),
-          const Text(
-            "Conteo",
-            style: TextStyle(color: Color.fromRGBO(0, 26, 78, 1), fontSize: 30),
+          Text(
+            '$contador', 
+            style: const TextStyle(
+              fontSize: 100)),
+           Text(
+            contador == 1? "Click": " Clicks" ,
+            style: const TextStyle(
+              color: Color.fromRGBO(0, 26, 78, 1), fontSize: 30),
           )
         ],
       )),
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             child: const Icon(Icons.add),
@@ -49,6 +66,7 @@ class _ContadorState extends State<Contador> {
           FloatingActionButton(
             child: const Icon(Icons.remove),
             onPressed: () {
+              // if (contador == 1) mensaje == "Click";
               if (contador > 0) {
                 contador--;
                 print("Si le diste");
