@@ -105,38 +105,43 @@ class _VotacionesState extends State<Votaciones> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              FloatingActionButton(
-                  backgroundColor: const Color.fromRGBO(255, 100, 100, 1),
-                  child: const Icon(Icons.add),
-                  onPressed: () {
-                    print("Izquierda");
-                    izquierda++;
-                    total++;
-                    mensaje = Ganador();
+              
+              vote_agregator(
+                icono: Icons.add,
+                colorcito: const Color.fromRGBO(255, 100, 100, 1),
+                funcion: () {
+                  print("Izquierda");
+                  izquierda++;
+                  total++;
+                  mensaje = Ganador();
 
-                    setState(() {});
-                  }),
-              FloatingActionButton(
-                  backgroundColor: const Color.fromRGBO(100, 255, 100, 1),
-                  child: const Icon(Icons.add),
-                  onPressed: () {
-                    print("Centro");
-                    centro++;
-                    total++;
-                    mensaje = Ganador();
+                  setState(() {});
+                },
+              ),
+              vote_agregator(
+                icono: Icons.add,
+                colorcito: const Color.fromRGBO(100, 255, 100, 1),
+                funcion: () {
+                  print("Centro");
+                  centro++;
+                  total++;
+                  mensaje = Ganador();
 
-                    setState(() {});
-                  }),
-              FloatingActionButton(
-                  backgroundColor: const Color.fromRGBO(100, 100, 255, 1),
-                  child: const Icon(Icons.add),
-                  onPressed: () {
-                    print("Derecha");
-                    derecha++;
-                    total++;
-                    mensaje = Ganador();
-                    setState(() {});
-                  }),
+                  setState(() {});
+                },
+              ),
+              vote_agregator(
+                icono: Icons.add,
+                colorcito: const Color.fromRGBO(100, 100, 255, 1),
+                funcion: () {
+                  print("Derecha");
+                  derecha++;
+                  total++;
+                  mensaje = Ganador();
+
+                  setState(() {});
+                },
+              ),
             ],
           ),
           Column(
@@ -152,7 +157,7 @@ class _VotacionesState extends State<Votaciones> {
               Text(
                 'Ganador: $mensaje ',
                 style: const TextStyle(
-                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                  color: Color.fromRGBO(166, 156, 156, 0.498),
                   fontSize: 20,
                 ),
               )
@@ -161,5 +166,27 @@ class _VotacionesState extends State<Votaciones> {
         ]),
       ),
     );
+  }
+}
+
+// ignore: camel_case_types
+class vote_agregator extends StatelessWidget {
+  final IconData icono;
+  final Color colorcito;
+  final VoidCallback? funcion;
+
+  const vote_agregator({
+    super.key,
+    required this.icono,
+    required this.colorcito,
+    this.funcion,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+        backgroundColor: colorcito,
+        child: Icon(icono),
+        onPressed: funcion );
   }
 }
